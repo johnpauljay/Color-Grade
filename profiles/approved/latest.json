@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "1.0.0",
+  "approvalStatus": "manual-baseline",
+  "approvalMethod": "human-review",
+  "approvalDate": "2026-10-11T00:00:00Z",
+  "profileVersion": "baseline-2026-10-11",
+  "description": "Initial manually-approved baseline color grading profile for Color-Grade Figma plugin",
+  "generatedAt": "2026-10-11T00:00:00Z",
+  "source": "human-expert-review",
+  "profileMetadata": {
+    "intent": "Provide foundational color palette recommendations for design use cases",
+    "reviewedBy": "johnpauljay",
+    "reviewNotes": "Baseline curated from design best practices and accessibility standards",
+    "readonly": true
+  },
+  "parameters": {
+    "colorSpace": {
+      "type": "string",
+      "value": "sRGB",
+      "description": "Color space for all palette recommendations",
+      "safeValues": ["sRGB", "HSL"]
+    },
+    "contrastMinimum": {
+      "type": "float",
+      "value": 4.5,
+      "description": "Minimum contrast ratio for text-on-background (WCAG AA)",
+      "safeRange": [3.0, 7.0],
+      "unit": "ratio",
+      "controlledOperations": ["grade-match", "accessibility-check"]
+    },
+    "lightnessRange": {
+      "type": "object",
+      "description": "Acceptable lightness range for primary colors",
+      "min": {
+        "type": "float",
+        "value": 20,
+        "unit": "percent",
+        "safeRange": [0, 50]
+      },
+      "max": {
+        "type": "float",
+        "value": 85,
+        "unit": "percent",
+        "safeRange": [50, 100]
+      },
+      "controlledOperations": ["grade-match", "palette-generation"]
+    },
+    "saturationTarget": {
+      "type": "float",
+      "value": 65,
+      "description": "Target saturation for generated accent colors",
+      "unit": "percent",
+      "safeRange": [40, 95],
+      "controlledOperations": ["grade-match", "color-suggestion"]
+    },
+    "hueSpacingMinimum": {
+      "type": "float",
+      "value": 45,
+      "description": "Minimum hue separation between primary palette colors",
+      "unit": "degrees",
+      "safeRange": [30, 120],
+      "controlledOperations": ["grade-match", "palette-harmony"]
+    },
+    "temperatureBalance": {
+      "type": "object",
+      "description": "Warm/cool color distribution for harmony",
+      "warmThreshold": {
+        "type": "float",
+        "value": 0.4,
+        "description": "Proportion of warm colors (hue 0-60, 300-360)",
+        "safeRange": [0.0, 1.0],
+        "controlledOperations": ["grade-match", "mood-matching"]
+      },
+      "coolThreshold": {
+        "type": "float",
+        "value": 0.4,
+        "description": "Proportion of cool colors (hue 180-300)",
+        "safeRange": [0.0, 1.0],
+        "controlledOperations": ["grade-match", "mood-matching"]
+      }
+    },
+    "neutralColorCount": {
+      "type": "integer",
+      "value": 2,
+      "description": "Number of neutral (grayscale) colors in palette",
+      "safeRange": [1, 3],
+      "controlledOperations": ["grade-match", "palette-generation"]
+    },
+    "accentColorCount": {
+      "type": "integer",
+      "value": 3,
+      "description": "Number of accent (chromatic) colors in palette",
+      "safeRange": [2, 5],
+      "controlledOperations": ["grade-match", "palette-generation"]
+    },
+    "ratingThreshold": {
+      "type": "float",
+      "value": 3.5,
+      "description": "Minimum user rating (1-5) to consider a palette suggestion as 'acceptable'",
+      "safeRange": [1.0, 5.0],
+      "controlledOperations": ["grade-match", "suggestion-filtering"]
+    }
+  },
+  "designContextProfiles": {
+    "landingPage": {
+      "type": "object",
+      "description": "Color recommendations for landing page designs",
+      "suggestedLightness": {
+        "foreground": { "type": "float", "value": 25, "unit": "percent" },
+        "background": { "type": "float", "value": 95, "unit": "percent" },
+        "accent": { "type": "float", "value": 55, "unit": "percent" }
+      },
+      "suggestedSaturation": {
+        "foreground": { "type": "float", "value": 15, "unit": "percent" },
+        "background": { "type": "float", "value": 0, "unit": "percent" },
+        "accent": { "type": "float", "value": 70, "unit": "percent" }
+      },
+      "moodTargets": ["energetic", "professional"],
+      "controlledOperations": ["grade-match", "context-aware-suggestion"]
+    },
+    "dashboard": {
+      "type": "object",
+      "description": "Color recommendations for data dashboard designs",
+      "suggestedLightness": {
+        "foreground": { "type": "float", "value": 20, "unit": "percent" },
+        "background": { "type": "float", "value": 98, "unit": "percent" },
+        "accent": { "type": "float", "value": 50, "unit": "percent" }
+      },
+      "suggestedSaturation": {
+        "foreground": { "type": "float", "value": 10, "unit": "percent" },
+        "background": { "type": "float", "value": 0, "unit": "percent" },
+        "accent": { "type": "float", "value": 60, "unit": "percent" }
+      },
+      "moodTargets": ["calm", "analytical"],
+      "controlledOperations": ["grade-match", "context-aware-suggestion"]
+    },
+    "mobileApp": {
+      "type": "object",
+      "description": "Color recommendations for mobile application designs",
+      "suggestedLightness": {
+        "foreground": { "type": "float", "value": 15, "unit": "percent" },
+        "background": { "type": "float", "value": 98, "unit": "percent" },
+        "accent": { "type": "float", "value": 60, "unit": "percent" }
+      },
+      "suggestedSaturation": {
+        "foreground": { "type": "float", "value": 20, "unit": "percent" },
+        "background": { "type": "float", "value": 0, "unit": "percent" },
+        "accent": { "type": "float", "value": 75, "unit": "percent" }
+      },
+      "moodTargets": ["vibrant", "engaging"],
+      "controlledOperations": ["grade-match", "context-aware-suggestion"]
+    }
+  },
+  "baselineColorPalettes": {
+    "description": "Approved reference palettes by category (no training counts, approved aggregate examples only)",
+    "professional": [
+      { "hex": "#1a202c", "role": "primary-foreground", "context": "text and primary UI elements" },
+      { "hex": "#2d3748", "role": "secondary-foreground", "context": "secondary text" },
+      { "hex": "#e2e8f0", "role": "background", "context": "default background" },
+      { "hex": "#4299e1", "role": "accent-primary", "context": "primary interactive elements" },
+      { "hex": "#48bb78", "role": "accent-secondary", "context": "success states" }
+    ],
+    "vibrant": [
+      { "hex": "#111827", "role": "primary-foreground", "context": "text and primary UI elements" },
+      { "hex": "#374151", "role": "secondary-foreground", "context": "secondary text" },
+      { "hex": "#f9fafb", "role": "background", "context": "default background" },
+      { "hex": "#f97316", "role": "accent-primary", "context": "primary interactive elements" },
+      { "hex": "#facc15", "role": "accent-secondary", "context": "highlights" }
+    ],
+    "minimal": [
+      { "hex": "#000000", "role": "primary-foreground", "context": "text and primary UI elements" },
+      { "hex": "#6b7280", "role": "secondary-foreground", "context": "secondary text" },
+      { "hex": "#ffffff", "role": "background", "context": "default background" },
+      { "hex": "#1f2937", "role": "accent-primary", "context": "borders and dividers" },
+      { "hex": "#d1d5db", "role": "accent-secondary", "context": "subtle elements" }
+    ]
+  },
+  "aggregateStatistics": {
+    "description": "Approved aggregate metrics only (no individual feedback or training data)",
+    "profileCoverageSummary": {
+      "designContextsSupported": 3,
+      "baselinePalettesProvided": 3,
+      "parametersDefinedCount": 9
+    },
+    "accessibilityMetrics": {
+      "wcagAACompliance": true,
+      "wcagAAACompliance": false,
+      "minContrastRatio": 4.5
+    },
+    "sourceMetadata": {
+      "dataSource": "human-expert-curation",
+      "calibrationMethod": "none",
+      "trainingDataUsed": false
+    }
+  },
+  "gradeMatchOperations": {
+    "description": "Parameters consumed by Grade match and color-grading operations",
+    "operations": [
+      {
+        "operationName": "grade-match",
+        "description": "Primary color matching and grading operation",
+        "consumedParameters": [
+          "contrastMinimum",
+          "lightnessRange",
+          "saturationTarget",
+          "hueSpacingMinimum",
+          "ratingThreshold"
+        ],
+        "expectedBehavior": "Evaluate candidate palette against approved parameter ranges and apply gradings based on match quality"
+      },
+      {
+        "operationName": "accessibility-check",
+        "description": "Verify color contrast and accessibility compliance",
+        "consumedParameters": ["contrastMinimum", "lightnessRange"],
+        "expectedBehavior": "Flag palettes that fail contrast minimums for WCAG compliance"
+      },
+      {
+        "operationName": "palette-generation",
+        "description": "Generate new palette suggestions",
+        "consumedParameters": [
+          "lightnessRange",
+          "saturationTarget",
+          "neutralColorCount",
+          "accentColorCount"
+        ],
+        "expectedBehavior": "Generate palettes respecting color counts and lightness/saturation constraints"
+      },
+      {
+        "operationName": "palette-harmony",
+        "description": "Evaluate harmonic relationships in candidate palette",
+        "consumedParameters": ["hueSpacingMinimum", "temperatureBalance"],
+        "expectedBehavior": "Score palette harmony based on hue spacing and warm/cool balance"
+      },
+      {
+        "operationName": "mood-matching",
+        "description": "Match palette to requested mood or design intent",
+        "consumedParameters": ["saturationTarget", "temperatureBalance"],
+        "expectedBehavior": "Select or score palettes by warm/cool distribution and saturation for mood fit"
+      },
+      {
+        "operationName": "context-aware-suggestion",
+        "description": "Suggest palettes tailored to design context (landing page, dashboard, etc.)",
+        "consumedParameters": ["designContextProfiles"],
+        "expectedBehavior": "Return context-specific color recommendations from designContextProfiles"
+      },
+      {
+        "operationName": "suggestion-filtering",
+        "description": "Filter palette suggestions by quality threshold",
+        "consumedParameters": ["ratingThreshold"],
+        "expectedBehavior": "Exclude suggestions below ratingThreshold"
+      }
+    ]
+  },
+  "changeLog": {
+    "description": "Profile version history",
+    "versions": [
+      {
+        "version": "baseline-2026-10-11",
+        "date": "2026-10-11T00:00:00Z",
+        "approvalStatus": "manual-baseline",
+        "changes": "Initial manually-reviewed baseline profile for Color-Grade",
+        "reviewer": "johnpauljay"
+      }
+    ]
+  },
+  "notes": {
+    "privacy": "This profile contains only approved, aggregated parameters and reference palettes. No individual user feedback, comments, photos, or identifiers are included.",
+    "calibration": "This is a manually-approved baseline. Calibrated profiles will be clearly marked with approvalStatus: 'calibration-approved' and will include calibration metadata.",
+    "rollback": "Previous versions are archived in profiles/approved/archive/. To rollback, fetch a previous version from archive and update latest.json.",
+    "credentialFree": "This profile is published publicly and requires no credentials to fetch."
+  }
+}
