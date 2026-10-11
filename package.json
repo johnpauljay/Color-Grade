@@ -1,0 +1,19 @@
+{
+  "name": "color-grade",
+  "version": "1.0.0",
+  "description": "Figma color grading agent with automated training pipeline",
+  "scripts": {
+    "dev": "node server.js",
+    "sync-training-data": "node scripts/sync-training-data.js",
+    "validate-datasets": "node scripts/validate-datasets.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@supabase/supabase-js": "^2.38.4",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
